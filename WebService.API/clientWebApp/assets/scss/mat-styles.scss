@@ -1,0 +1,39 @@
+.mat-tooltip.tooltip {
+    font-size: 16px;
+}
+
+.mat-dialog-container {
+    overflow: hidden !important;
+}
+
+.tooltip {
+    font-size: 18px !important;
+    white-space: pre-line;
+}
+
+.my-mat-field {
+    .mat-form-field-wrapper {
+        padding: 0;
+
+        .mat-form-field-infix {
+            .mat-form-field-label-wrapper {
+                label {
+                    color: #000000 !important;
+                }
+            }
+        }
+    }
+
+    .mat-select-value {
+        color: #fff !important;
+    }
+}
+
+.mat-dialog-container {
+    padding: 0 !important;
+    background-color: transparent !important;
+}
+
+.cdk-overlay-backdrop {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+}

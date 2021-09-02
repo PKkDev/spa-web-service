@@ -1,0 +1,188 @@
+<div class="post_container" *ngIf="postData != undefined">
+
+    <ng-template [ngTemplateOutlet]="selectedTemplate"></ng-template>
+
+</div>
+
+<ng-template #readTemplate>
+
+    <div class="post_body">
+
+        <div class="post_title">
+            автор: {{postData?.author}}
+            <span class="post_date">
+                <br>
+                {{postData?.edited?'изменён ':''}}
+                ({{postData?.displayDate}})
+            </span>
+        </div>
+
+
+
+        <div class="post_text">
+            {{postData?.text}}
+        </div>
+
+    </div>
+
+    <div class="post_file">
+
+        <div class="separate"></div>
+
+        файлы:
+
+        <div class="file_item download" *ngFor="let file of postData?.fileDescDto" (click)="download(file.name)">
+            <hr>
+            <span class="file_item_name" [matTooltip]="file.name" matTooltipClass="tooltip">
+                {{file.name}}
+            </span>
+            <span class="file_item_size">
+                {{file.size}}
+            </span>
+        </div>
+
+    </div>
+
+
+
+    <div class="post_tool" *ngIf="authService.checkLogIn()">
+
+        <button class="btn_tool" matTooltip="Режим редактирования" matTooltipClass="tooltip" (click)="editePost()">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 330 330"
+                style="enable-background:new 0 0 330 330;" xml:space="preserve">
+                <g>
+                    <path id="XMLID_24_" d="M75,180v60c0,8.284,6.716,15,15,15h60c3.978,0,7.793-1.581,10.606-4.394l164.999-165
+  c5.858-5.858,5.858-15.355,0-21.213l-60-60C262.794,1.581,258.978,0,255,0s-7.794,1.581-10.606,4.394l-165,165
+  C76.58,172.206,75,176.022,75,180z M105,186.213L255,36.213L293.787,75l-150,150H105V186.213z" />
+                    <path id="XMLID_27_"
+                        d="M315,150.001c-8.284,0-15,6.716-15,15V300H30V30H165c8.284,0,15-6.716,15-15s-6.716-15-15-15H15
+  C6.716,0,0,6.716,0,15v300c0,8.284,6.716,15,15,15h300c8.284,0,15-6.716,15-15V165.001C330,156.716,323.284,150.001,315,150.001z" />
+                </g>
+            </svg>
+        </button>
+
+    </div>
+
+</ng-template>
+
+<ng-template #editTemplate>
+
+
+
+    <div class="post_body">
+
+        <form (ngSubmit)="updatePost()" #postForm="ngForm" *ngIf="editedPost">
+
+            <div class="post_title">
+
+                <mat-form-field required class="mat-field" color="warn" appearance='outline'>
+                    <mat-label>автор</mat-label>
+                    <input name="author" matInput #author="ngModel" [(ngModel)]="editedPost.author">
+                </mat-form-field>
+
+            </div>
+
+            <div class="post_text">
+
+                <mat-form-field required class="area_text" color="warn" appearance="outline">
+                    <mat-label>текст поста</mat-label>
+                    <textarea name="text" #text="ngModel" required [mat-autosize]="true" [matAutosizeMinRows]="4"
+                        [matAutosizeMaxRows]="7" matInput style="resize: none" [(ngModel)]="editedPost.text">
+                        </textarea>
+                </mat-form-field>
+
+
+            </div>
+
+            <div class="post_tool" *ngIf="authService.checkLogIn()">
+
+                <button class="btn_tool" matTooltip="Удалить пост" matTooltipClass="tooltip" type="button"
+                    (click)="removePost()" *ngIf="!this.editedPost.isNew">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 900.5 900.5"
+                        style="enable-background:new 0 0 900.5 900.5;" xml:space="preserve">
+                        <g>
+                            <path
+                                d="M176.415,880.5c0,11.046,8.954,20,20,20h507.67c11.046,0,20-8.954,20-20V232.487h-547.67V880.5L176.415,880.5z
+     M562.75,342.766h75v436.029h-75V342.766z M412.75,342.766h75v436.029h-75V342.766z M262.75,342.766h75v436.029h-75V342.766z" />
+                            <path
+                                d="M618.825,91.911V20c0-11.046-8.954-20-20-20h-297.15c-11.046,0-20,8.954-20,20v71.911v12.5v12.5H141.874
+    c-11.046,0-20,8.954-20,20v50.576c0,11.045,8.954,20,20,20h34.541h547.67h34.541c11.046,0,20-8.955,20-20v-50.576
+    c0-11.046-8.954-20-20-20H618.825v-12.5V91.911z M543.825,112.799h-187.15v-8.389v-12.5V75h187.15v16.911v12.5V112.799z" />
+                        </g>
+                    </svg>
+                </button>
+
+                <button class="btn_tool" type="button" matTooltip="Отменить действие" matTooltipClass="tooltip"
+                    (click)="cancelEdit(editedPost.isNew)">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                        viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;" xml:space="preserve">
+                        <g>
+                            <path d="M244.5,0C109.3,0,0,109.3,0,244.5S109.3,489,244.5,489S489,379.7,489,244.5S379.7,0,244.5,0z M244.5,448.4
+      c-112.4,0-203.9-91.5-203.9-203.9S132.1,40.6,244.5,40.6s203.9,91.5,203.9,203.9S356.9,448.4,244.5,448.4z" />
+                            <path d="M354.8,134.2c-8.3-8.3-20.8-8.3-29.1,0l-81.2,81.2l-81.1-81.1c-8.3-8.3-20.8-8.3-29.1,0s-8.3,20.8,0,29.1l81.1,81.1
+      l-81.1,81.1c-8.3,8.3-8.6,21.1,0,29.1c6.5,6,18.8,10.4,29.1,0l81.1-81.1l81.1,81.1c12.4,11.7,25,4.2,29.1,0
+      c8.3-8.3,8.3-20.8,0-29.1l-81.1-81.1l81.1-81.1C363.1,155,363.1,142.5,354.8,134.2z" />
+                        </g>
+                    </svg>
+                </button>
+
+                <button class="btn_tool" matTooltip="Применить изменения" matTooltipClass="tooltip" type="submit"
+                    [disabled]="!postForm.form.valid">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                        viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                        <g>
+                            <path d="M0,0v512h512V0H0z M462.452,462.452H49.548V49.548h412.903V462.452z" />
+                        </g>
+                        <g>
+                            <polygon
+                                points="345.838,164.159 222.968,287.029 157.904,221.965 122.87,257.003 222.968,357.1 380.872,199.196" />
+                        </g>
+                    </svg>
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="post_file">
+
+        <!-- <div class="separate"></div> -->
+
+        <div>
+            файлы:
+
+            <button class="add_file" type="button" mat-stroked-button (click)="fileInput.click()">выбрать</button>
+            <input accept="application/pdf" multiple required hidden (change)="onFileSelected(fileInput)" name="newIcon"
+                #fileInput type="file">
+        </div>
+
+
+        <div class="file_item" *ngFor="let file of postData?.fileDescDto">
+            <hr>
+            <span class="file_item_name" [matTooltip]="file.name" matTooltipClass="tooltip">
+                {{file.name}}
+            </span>
+            <span class="file_item_size">
+                {{file.size}}
+            </span>
+            <button class="del_btn" (click)="removeFileFromServer(file.name)">x</button>
+        </div>
+        <div class="file_item" *ngFor="let file of selectedFiles">
+            <hr>
+            <span class="file_item_name" [matTooltip]="file.name" matTooltipClass="tooltip">
+                {{file.name}}
+            </span>
+            <span class="file_item_size">
+                {{file.size}}B (new)
+            </span>
+            <button class="del_btn" (click)="removeFileFromSelected(file.name)">x</button>
+        </div>
+
+    </div>
+
+
+
+
+</ng-template>

@@ -1,0 +1,11 @@
+<div class="container_info_panel">
+
+  <span class="item" *ngIf="authService.checkLogIn() else notAuthBlock">
+    всего записей: {{countPost$ | async}}
+  </span>
+
+  <ng-template #notAuthBlock>
+    требуется авторизация
+  </ng-template>
+
+</div>

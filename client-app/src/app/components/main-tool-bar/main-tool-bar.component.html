@@ -1,0 +1,55 @@
+<div class="container_panel">
+
+  <div class="expand_block" [ngClass]="{'closed':!navMenuisVisible, 'open':navMenuisVisible}">
+
+    <span class="expand_block_title" (click)="this.navMenuisVisible = !this.navMenuisVisible;">
+      Навигация
+      <ng-template [ngTemplateOutlet]="loadNavIcon()"></ng-template>
+    </span>
+
+    <span class="btn_nav" routerLink='todo' routerLinkActive='actice'>todo</span>
+    <span class="btn_nav" routerLink='post' routerLinkActive='actice'>post</span>
+    <span class="btn_nav" routerLink='department' routerLinkActive='actice'>department</span>
+    <span class="btn_nav" routerLink='foot' routerLinkActive='actice'>football</span>
+
+  </div>
+
+  <hr>
+
+  <div class="expand_block" [ngClass]="{'closed':!lincMenuVisible, 'open':lincMenuVisible}">
+
+    <span class="expand_block_title" (click)="this.lincMenuVisible = !this.lincMenuVisible;">
+      Ссылки
+      <ng-template [ngTemplateOutlet]="loadLincICon()"></ng-template>
+    </span>
+
+    <span class="btn_nav">
+      <a target="_blanck" [href]="linckToAuthor"> linck to author</a>
+    </span>
+
+    <span class="btn_nav">
+      <a target="_blanck" [href]="linckToCode"> linck to code</a>
+    </span>
+
+    <span class="btn_nav">
+      <a target="_blanck" [href]="apiUsrl"> linck to API</a>
+    </span>
+
+  </div>
+
+</div>
+
+
+<ng-template #closedIcon>
+  <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+    <path d="M0 0h24v24H0z" fill="none" />
+    <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+  </svg>
+</ng-template>
+
+<ng-template #openIcon>
+  <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+    <path d="M0 0h24v24H0z" fill="none" />
+    <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z" />
+  </svg>
+</ng-template>

@@ -1,0 +1,68 @@
+@import "~src/assets/scss/base-foot-page.scss";
+
+.page_content {
+    .tool_container {
+        .tool {
+        }
+    }
+
+    .body_content {
+        .hidden {
+            .match {
+                height: 100px;
+            }
+        }
+
+        .match_container {
+            padding: 10px;
+            width: 25%;
+            height: fit-content;
+            box-sizing: border-box;
+            font-weight: 500;
+
+            @media (max-width: 770px) {
+                width: 50%;
+            }
+
+            @media (max-width: 505px) {
+                width: 100%;
+            }
+
+            .match {
+                box-sizing: border-box;
+                position: relative;
+                width: 100%;
+                padding: 10px;
+                box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 6px;
+                background-color: #fff;
+                text-align: center;
+                // background-image: url(https://www.ligastavok.ru/soccer-eff3e5.webp);
+
+                .date {
+                    font-size: 12px;
+                    margin: 0 0 5px 0;
+                }
+
+                .teams {
+                    display: flex;
+                    align-items: center;
+
+                    .team {
+                        cursor: pointer;
+                        padding: 5px;
+                        width: 30%;
+                        font-size: 14px;
+                        line-height: 14px;
+                        text-decoration: underline;
+                        text-decoration-color: red;
+                    }
+
+                    .score {
+                        width: 40%;
+                    }
+                }
+            }
+        }
+    }
+}

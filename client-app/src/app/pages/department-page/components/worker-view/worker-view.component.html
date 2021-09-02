@@ -1,0 +1,129 @@
+<div class="container_workers">
+
+    <h2 class="container_workers_title">
+        Сотрудники
+    </h2>
+
+    <hr>
+
+    <div class="top_bar">
+
+        <button class="btn_tool" (click)="addWorker()" matTooltip="Добавить" matTooltipClass="tooltip"
+            [disabled]="needSelectedDep || fileIsPending || workerIsLoading">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 489.8 489.8"
+                style="enable-background:new 0 0 489.8 489.8;" xml:space="preserve">
+                <g>
+                    <path d="M438.2,0H51.6C23.1,0,0,23.2,0,51.6v386.6c0,28.5,23.2,51.6,51.6,51.6h386.6c28.5,0,51.6-23.2,51.6-51.6V51.6
+           C489.8,23.2,466.6,0,438.2,0z M465.3,438.2c0,14.9-12.2,27.1-27.1,27.1H51.6c-14.9,0-27.1-12.2-27.1-27.1V51.6
+           c0-14.9,12.2-27.1,27.1-27.1h386.6c14.9,0,27.1,12.2,27.1,27.1V438.2z" />
+                    <path d="M337.4,232.7h-80.3v-80.3c0-6.8-5.5-12.3-12.3-12.3s-12.3,5.5-12.3,12.3v80.3h-80.3c-6.8,0-12.3,5.5-12.3,12.2
+           c0,6.8,5.5,12.3,12.3,12.3h80.3v80.3c0,6.8,5.5,12.3,12.3,12.3s12.3-5.5,12.3-12.3v-80.3h80.3c6.8,0,12.3-5.5,12.3-12.3
+           C349.7,238.1,344.2,232.7,337.4,232.7z" />
+                </g>
+            </svg>
+        </button>
+
+        <button class="btn_tool" (click)="fileInput.click()" matTooltip="Импорт" matTooltipClass="tooltip"
+            [disabled]="workers.length == 0 || fileIsPending">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+            </svg>
+        </button>
+        <input required hidden (change)="onFileSelected(fileInput)" name="newIcon" #fileInput type="file">
+
+        <button class="btn_tool" (click)="exportWorker()" matTooltip="Экспорт" matTooltipClass="tooltip"
+            [disabled]="workers.length == 0 || fileIsPending">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z" />
+            </svg>
+        </button>
+
+        <mat-radio-group class="radio_group" aria-label="type of file" [color]="'warn'" [(ngModel)]="selectedTypeFile">
+            <mat-radio-button class="radio_btn" [value]="0">JSON</mat-radio-button>
+            <mat-radio-button class="radio_btn" [value]="1">XML</mat-radio-button>
+        </mat-radio-group>
+
+        <mat-form-field class="my-mat-field" color="warn" appearance='outline'>
+            <mat-label class="mat_label">Сортировка</mat-label>
+            <mat-select (selectionChange)="onSortWorkers()" [(ngModel)]="sortedColumn" name="filterColumn"
+                [disabled]="workers.length == 0">
+                <mat-option style="color:#000" *ngFor="let opt of sortedColumnOpt" [value]="opt">
+                    {{opt}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+    </div>
+
+    <ng-container *ngIf="needSelectedDep; else viewBlock">
+        требуется выбрать департамент
+    </ng-container>
+
+    <ng-template #viewBlock>
+
+        <ng-container *ngIf="workerIsLoading; else workerLoadedBlock">
+            загрузка...
+        </ng-container>
+
+        <ng-template #workerLoadedBlock>
+
+            <ng-container *ngIf="workers.length != 0; else noWorkerBlock">
+
+                <div class="worker" [matTooltip]="getDesctStr(worker)" matTooltipClass="tooltip"
+                    *ngFor="let worker of workers">
+
+                    {{worker.fName}} {{worker.lName}}
+
+                    <div class="worker_tool_bar">
+
+                        <button class="btn_tool" type="button" (click)="editeWorker(worker)">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 330 330"
+                                style="enable-background:new 0 0 330 330;" xml:space="preserve">
+                                <g>
+                                    <path id="XMLID_24_" d="M75,180v60c0,8.284,6.716,15,15,15h60c3.978,0,7.793-1.581,10.606-4.394l164.999-165
+                  c5.858-5.858,5.858-15.355,0-21.213l-60-60C262.794,1.581,258.978,0,255,0s-7.794,1.581-10.606,4.394l-165,165
+                  C76.58,172.206,75,176.022,75,180z M105,186.213L255,36.213L293.787,75l-150,150H105V186.213z" />
+                                    <path id="XMLID_27_"
+                                        d="M315,150.001c-8.284,0-15,6.716-15,15V300H30V30H165c8.284,0,15-6.716,15-15s-6.716-15-15-15H15
+                  C6.716,0,0,6.716,0,15v300c0,8.284,6.716,15,15,15h300c8.284,0,15-6.716,15-15V165.001C330,156.716,323.284,150.001,315,150.001z" />
+                                </g>
+                            </svg>
+                        </button>
+
+                        <button class="btn_tool" type="button" (click)="removeWorker(worker.id)">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 900.5 900.5"
+                                style="enable-background:new 0 0 900.5 900.5;" xml:space="preserve">
+                                <g>
+                                    <path
+                                        d="M176.415,880.5c0,11.046,8.954,20,20,20h507.67c11.046,0,20-8.954,20-20V232.487h-547.67V880.5L176.415,880.5z
+         M562.75,342.766h75v436.029h-75V342.766z M412.75,342.766h75v436.029h-75V342.766z M262.75,342.766h75v436.029h-75V342.766z" />
+                                    <path
+                                        d="M618.825,91.911V20c0-11.046-8.954-20-20-20h-297.15c-11.046,0-20,8.954-20,20v71.911v12.5v12.5H141.874
+        c-11.046,0-20,8.954-20,20v50.576c0,11.045,8.954,20,20,20h34.541h547.67h34.541c11.046,0,20-8.955,20-20v-50.576
+        c0-11.046-8.954-20-20-20H618.825v-12.5V91.911z M543.825,112.799h-187.15v-8.389v-12.5V75h187.15v16.911v12.5V112.799z" />
+                                </g>
+                            </svg>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </ng-container>
+
+            <ng-template #noWorkerBlock>
+
+                отсутствуют работники
+
+            </ng-template>
+
+        </ng-template>
+
+    </ng-template>
+
+
+
+
+</div>

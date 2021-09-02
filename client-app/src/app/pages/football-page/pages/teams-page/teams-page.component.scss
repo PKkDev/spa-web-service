@@ -1,0 +1,75 @@
+@import "~src/assets/scss/base-foot-page.scss";
+
+.page_content {
+  .tool_container {
+    .tool {
+    }
+  }
+
+  .body_content {
+    .hidden {
+      .team {
+        height: 110px;
+      }
+    }
+
+    .team_container {
+      padding: 10px;
+      width: 25%;
+      height: fit-content;
+      box-sizing: border-box;
+
+      @media (max-width: 770px) {
+        width: 50%;
+      }
+
+      @media (max-width: 505px) {
+        width: 100%;
+      }
+
+      .team {
+        box-sizing: border-box;
+        position: relative;
+        width: 100%;
+        padding: 10px;
+        box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 6px;
+        background-color: #fff;
+        text-align: center;
+        min-height: 70px;
+        font-weight: 500;
+
+        .title {
+          margin: 0 0 8px 0;
+          font-size: 18px;
+          text-align: center;
+        }
+
+        .tool_panel {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+
+          .tool_icon {
+            svg {
+              cursor: pointer;
+              height: 30px;
+              width: 30px;
+
+              &:hover {
+                fill: red;
+              }
+            }
+          }
+        }
+
+        .logo {
+          height: 60px;
+          width: 90px;
+        }
+      }
+    }
+  }
+}

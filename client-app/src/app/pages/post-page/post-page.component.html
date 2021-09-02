@@ -1,0 +1,58 @@
+<div class="post_view_container">
+
+  <div class="tool_container">
+
+    <div class="tool search">
+
+      <input class="search_input" placeholder="поиск" type="text" name="textFilter" #login="ngModel"
+        [(ngModel)]="textFilter" (ngModelChange)="setTextFilter(true)" autocomplete="off">
+
+    </div>
+
+    <div class="tool date_filter">
+
+      <compack-date-picker [useTime]="true" [locale]="'ru'" [rangeMode]="true" [type]="'line'"
+        [formatOutputDate]='formatOutPut' (selectLastDateEvent)="selectLastDateEvent($event)"></compack-date-picker>
+
+    </div>
+
+    <div class="tool add_tool" *ngIf="authService.checkLogIn()">
+
+      <button class="btn_tool" matTooltip="добавить пост" matTooltipClass="tooltip" (click)="emiteAddPost()">
+        Добавить пост
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="post_item_container">
+
+    <ng-container *ngIf="listViewPost.length != 0">
+      <div class="post_col" *ngFor="let col of listColPost">
+        <div class="post_item" *ngFor="let viewPost of col.col">
+          <app-post-view [postData]="viewPost"></app-post-view>
+        </div>
+      </div>
+    </ng-container>
+
+    <div class="loading_container" *ngIf="postsIsLoading">
+      <div class="loading_bars_container">
+        <div class="blockG" id="rotateG_01"></div>
+        <div class="blockG" id="rotateG_02"></div>
+        <div class="blockG" id="rotateG_03"></div>
+        <div class="blockG" id="rotateG_04"></div>
+        <div class="blockG" id="rotateG_05"></div>
+        <div class="blockG" id="rotateG_06"></div>
+        <div class="blockG" id="rotateG_07"></div>
+        <div class="blockG" id="rotateG_08"></div>
+      </div>
+    </div>
+
+    <h2 *ngIf="listViewPost.length == 0 && !postsIsLoading">
+      Отсутствуют записи...
+    </h2>
+
+  </div>
+
+</div>

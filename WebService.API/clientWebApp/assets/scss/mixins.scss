@@ -1,0 +1,39 @@
+@mixin basic_ico_btn {
+    padding: 0;
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+@mixin basic_btn($fontSize) {
+    font-size: $fontSize;
+    color: #000000;
+    background-color: #eee;
+
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+
+    &:hover {
+        background-color: #ff0201;
+        color: #fff;
+    }
+}

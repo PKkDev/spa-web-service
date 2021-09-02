@@ -1,0 +1,269 @@
+<div class="sidebar" [ngClass]="{'active':sideBarToogly}">
+    <div class="logo_sidebar">
+
+        <div class="logo">
+            <span class="logo_img">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                        d="m3 5.557 7.357-1.002.004 7.097-7.354.042L3 5.557zm7.354 6.913.006 7.103-7.354-1.011v-6.14l7.348.048zm.892-8.046L21.001 3v8.562l-9.755.077V4.424zm9.758 8.113-.003 8.523-9.755-1.378-.014-7.161 9.772.016z">
+                    </path>
+                </svg>
+            </span>
+            <div class="logo_name">TestingProject</div>
+        </div>
+
+        <span class="logo_menu" (click)="changeStteSideBa()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path>
+            </svg>
+        </span>
+
+    </div>
+
+    <ul class="nav_list">
+        <li>
+            <span class="search_block">
+                <span class="search_icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z">
+                        </path>
+                    </svg>
+                </span>
+                <input type="text" class="search" placeholder="search...">
+                <span class="tooltip">Search</span>
+            </span>
+        </li>
+        <li>
+            <a class="menu_item" href="#" routerLink='todo' routerLinkActive='actice'>
+                <span class="linck_icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M19 4h-3V2h-2v2h-4V2H8v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zM5 20V7h14V6l.002 14H5z">
+                        </path>
+                        <path d="M7 9h10v2H7zm0 4h5v2H7z"></path>
+                    </svg>
+                </span>
+                <span class="links_name">todo</span>
+            </a>
+            <span class="tooltip">Todo page</span>
+        </li>
+        <li>
+            <a class="menu_item" href="#" routerLink='post' routerLinkActive='actice'>
+                <span class="linck_icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M5 2c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h3.586L12 21.414 15.414 18H19c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2H5zm14 14h-4.414L12 18.586 9.414 16H5V4h14v12z">
+                        </path>
+                        <path d="M7 7h10v2H7zm0 4h7v2H7z"></path>
+                    </svg>
+                </span>
+                <span class="links_name">Post</span>
+            </a>
+            <span class="tooltip">post page</span>
+        </li>
+        <li>
+            <a class="menu_item" href="#" routerLink='department' routerLinkActive='actice'>
+                <span class="linck_icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M18 2H6c-1.103 0-2 .897-2 2v17a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4c0-1.103-.897-2-2-2zm0 18H6V4h12v16z">
+                        </path>
+                        <path d="M8 6h3v2H8zm5 0h3v2h-3zm-5 4h3v2H8zm5 .031h3V12h-3zM8 14h3v2H8zm5 0h3v2h-3z"></path>
+                    </svg>
+                </span>
+                <span class="links_name">department</span>
+            </a>
+            <span class="tooltip">department page</span>
+        </li>
+        <li>
+            <a class="menu_item" href="#" routerLink='foot' routerLinkActive='actice'>
+                <span class="linck_icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M19.071 4.929a9.936 9.936 0 0 0-7.07-2.938 9.943 9.943 0 0 0-7.072 2.938c-3.899 3.898-3.899 10.243 0 14.142a9.94 9.94 0 0 0 7.073 2.938 9.936 9.936 0 0 0 7.07-2.937c3.899-3.898 3.899-10.243-.001-14.143zM12.181 4h-.359c.061-.001.119-.009.18-.009s.118.008.179.009zm6.062 13H16l-1.258 2.516a7.956 7.956 0 0 1-2.741.493 7.96 7.96 0 0 1-2.746-.494L8 17.01H5.765a7.96 7.96 0 0 1-1.623-3.532L6 11 4.784 8.567a7.936 7.936 0 0 1 1.559-2.224 7.994 7.994 0 0 1 3.22-1.969L12 6l2.438-1.625a8.01 8.01 0 0 1 3.22 1.968 7.94 7.94 0 0 1 1.558 2.221L18 11l1.858 2.478A7.952 7.952 0 0 1 18.243 17z">
+                        </path>
+                        <path d="m8.5 11 1.5 4h4l1.5-4L12 8.5z"></path>
+                    </svg>
+                </span>
+                <span class="links_name">Football</span>
+            </a>
+            <span class="tooltip">football page</span>
+        </li>
+        <li #subMenuLinc>
+            <div class="menu_item" (click)="showSubMenu()">
+                <span class="linck_icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="m13 3 3.293 3.293-7 7 1.414 1.414 7-7L21 11V3z"></path>
+                        <path
+                            d="M19 19H5V5h7l-2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5l-2-2v7z">
+                        </path>
+                    </svg>
+                </span>
+                <span class="links_name">Links</span>
+            </div>
+            <div class="sub_menu" [ngClass]="{'sub_menu_view':lincSubMenuIsVisible}">
+                <a class="sub_menu_item" [href]="linkToCode" target="_blanck">
+                    <div class="sub_menu_item_icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974 0 4.406 2.857 8.145 6.821 9.465.499.09.679-.217.679-.481 0-.237-.008-.865-.011-1.696-2.775.602-3.361-1.338-3.361-1.338-.452-1.152-1.107-1.459-1.107-1.459-.905-.619.069-.605.069-.605 1.002.07 1.527 1.028 1.527 1.028.89 1.524 2.336 1.084 2.902.829.091-.645.351-1.085.635-1.334-2.214-.251-4.542-1.107-4.542-4.93 0-1.087.389-1.979 1.024-2.675-.101-.253-.446-1.268.099-2.64 0 0 .837-.269 2.742 1.021a9.582 9.582 0 0 1 2.496-.336 9.554 9.554 0 0 1 2.496.336c1.906-1.291 2.742-1.021 2.742-1.021.545 1.372.203 2.387.099 2.64.64.696 1.024 1.587 1.024 2.675 0 3.833-2.33 4.675-4.552 4.922.355.308.675.916.675 1.846 0 1.334-.012 2.41-.012 2.737 0 .267.178.577.687.479C19.146 20.115 22 16.379 22 11.974 22 6.465 17.535 2 12.026 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="sub_menu_item_text">
+                        link to git code
+                    </div>
+                </a>
+                <a class="sub_menu_item" [href]="linkToAuthor" target="_blanck">
+                    <div class="sub_menu_item_icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974 0 4.406 2.857 8.145 6.821 9.465.499.09.679-.217.679-.481 0-.237-.008-.865-.011-1.696-2.775.602-3.361-1.338-3.361-1.338-.452-1.152-1.107-1.459-1.107-1.459-.905-.619.069-.605.069-.605 1.002.07 1.527 1.028 1.527 1.028.89 1.524 2.336 1.084 2.902.829.091-.645.351-1.085.635-1.334-2.214-.251-4.542-1.107-4.542-4.93 0-1.087.389-1.979 1.024-2.675-.101-.253-.446-1.268.099-2.64 0 0 .837-.269 2.742 1.021a9.582 9.582 0 0 1 2.496-.336 9.554 9.554 0 0 1 2.496.336c1.906-1.291 2.742-1.021 2.742-1.021.545 1.372.203 2.387.099 2.64.64.696 1.024 1.587 1.024 2.675 0 3.833-2.33 4.675-4.552 4.922.355.308.675.916.675 1.846 0 1.334-.012 2.41-.012 2.737 0 .267.178.577.687.479C19.146 20.115 22 16.379 22 11.974 22 6.465 17.535 2 12.026 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="sub_menu_item_text">
+                        link to author
+                    </div>
+                </a>
+                <a class="sub_menu_item" [href]="apiUsrl" target="_blanck">
+                    <div class="sub_menu_item_icon">
+                        <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 256 256">
+                            <path
+                                d="M127.06 255.997C58.85 255.527-.457 198.918.003 126.998C.445 57.796 57.952-.469 129.11.003c69.157.46 127.503 57.864 126.885 128.191c.573 69.69-58.06 128.295-128.935 127.803zm0 0C58.85 255.527-.457 198.918.003 126.998C.445 57.796 57.952-.469 129.11.003c69.157.46 127.503 57.864 126.885 128.191c.573 69.69-58.06 128.295-128.935 127.803z"
+                                fill="#FFF" />
+                            <path
+                                d="M127.185 238.997C68.032 238.59 16.604 189.5 17.002 127.131c.384-60.012 50.253-110.54 111.961-110.129c59.972.399 110.569 50.18 110.033 111.167c.496 60.433-50.349 111.255-111.811 110.828zm0 0C68.032 238.59 16.604 189.5 17.002 127.131c.384-60.012 50.253-110.54 111.961-110.129c59.972.399 110.569 50.18 110.033 111.167c.496 60.433-50.349 111.255-111.811 110.828z"
+                                fill="#49A32B" />
+                            <path
+                                d="M169.327 127.956c-.284 5.29-4.906 9.683-9.46 8.917h-.069a9.133 9.133 0 0 1-9.145-9.124a9.276 9.276 0 0 1 9.427-8.96c5.045.025 9.52 4.288 9.247 9.167zM88.201 179.22c1.902.056 3.806.015 6 .015v13.786c-13.635 2.305-24.866-1.566-27.622-13.091a76.501 76.501 0 0 1-1.736-12.886c-.293-4.592.213-9.235-.137-13.819c-.97-12.612-2.603-16.918-14.706-17.514v-15.696a22.665 22.665 0 0 1 2.632-.452c6.636-.327 9.433-2.362 10.917-8.898a74.57 74.57 0 0 0 1.194-11.122c.526-7.217.34-14.551 1.542-21.651c1.737-10.267 8.111-15.255 18.64-15.814c2.996-.16 6.001-.024 9.396-.024v14.09c-1.397.1-2.677.303-3.95.265c-8.58-.263-9.023 2.66-9.65 9.762c-.39 4.454.149 8.984-.155 13.454a107.113 107.113 0 0 1-1.781 13.245c-1.238 6.339-5.135 11.053-10.535 15.053c10.483 6.823 11.676 17.423 12.357 28.188c.366 5.784.199 11.61.786 17.366c.457 4.467 2.195 5.607 6.808 5.743zm8.836-60.43h.162a9.078 9.078 0 0 1 8.928 9.226a8.884 8.884 0 0 1-9.396 8.851a9.046 9.046 0 1 1 .306-18.078zm31.236 0c5.483-.043 9.124 3.51 9.152 8.93c.03 5.565-3.422 9.125-8.868 9.149c-5.54.024-9.186-3.48-9.216-8.867a8.671 8.671 0 0 1 8.933-9.213zm65.4-6.867c1.459 5.447 4.298 7.362 10.032 7.623c.94.044 1.875.203 3.163.346v15.692c-.697.23-1.412.4-2.138.512c-7.684.478-11.186 3.63-11.962 11.335c-.496 4.919-.455 9.892-.796 14.828a125.806 125.806 0 0 1-1.476 16.18c-1.96 9.703-8.019 14.544-18.029 15.135c-3.221.19-6.466.03-9.94.03v-14.026c1.87-.115 3.52-.275 5.174-.314c5.981-.143 8.096-2.071 8.389-8.011c.324-6.525.465-13.059.757-19.586c.423-9.433 3.006-17.861 11.795-23.745c-5.03-3.585-9.067-7.928-10.112-13.783c-1.265-7.097-1.674-14.351-2.355-21.548c-.336-3.597-.32-7.226-.671-10.821c-.379-3.88-3.045-5.224-6.577-5.31c-2.024-.05-4.055-.01-6.642-.01V62.754c16.509-2.741 27.913 2.752 28.973 18.548c.443 6.632.378 13.297.803 19.93c.186 3.608.726 7.19 1.612 10.691z"
+                                fill="#FFF" />
+                        </svg>
+                    </div>
+                    <div class="sub_menu_item_text">
+                        link to swagger
+                    </div>
+                </a>
+            </div>
+            <!-- <span class="tooltip">Links menu</span> -->
+        </li>
+    </ul>
+
+    <div class="profile_content" *ngIf="authService.checkLogIn(); else noAuthBLock">
+        <div class="profile">
+            <div class="profile_details">
+                <img src="https://1000logos.net/wp-content/uploads/2021/05/GitHub-logo.png" alt="us">
+                <div class="name_job">
+                    <div class="name">Kirill Portnov</div>
+                    <div class="job">Web Dev</div>
+                </div>
+            </div>
+            <span class="log_icon" (click)="authService.logOut()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M16 13v-2H7V8l-5 4 5 4v-3z"></path>
+                    <path
+                        d="M20 3h-9c-1.103 0-2 .897-2 2v4h2V5h9v14h-9v-4H9v4c0 1.103.897 2 2 2h9c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2z">
+                    </path>
+                </svg>
+                <span class="tooltip">Выти из системы</span>
+            </span>
+        </div>
+    </div>
+
+    <ng-template #noAuthBLock>
+
+        <div class="profile_content">
+            <div class="profile">
+                <div class="profile_details">
+                    Войти в систему
+                </div>
+                <span class="log_icon" (click)="openLoginDialog()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="m13 16 5-4-5-4v3H4v2h9z"></path>
+                        <path
+                            d="M20 3h-9c-1.103 0-2 .897-2 2v4h2V5h9v14h-9v-4H9v4c0 1.103.897 2 2 2h9c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2z">
+                        </path>
+                    </svg>
+                    <span class="tooltip">Авторизация</span>
+                </span>
+            </div>
+        </div>
+
+    </ng-template>
+
+</div>
+
+<div class="page_content">
+    <router-outlet></router-outlet>
+</div>
+
+
+
+<!-- <div class="scroll_container">
+
+    <header class="header">
+        <app-header></app-header>
+    </header>
+
+    <div class="view_container">
+
+        <div class="body_container" [ngClass]="{'full':isResizeBarBlock}">
+            <router-outlet></router-outlet>
+        </div>
+
+        <div class="bar_container"
+            [ngClass]="{'shell':isResizeBarBlock, 'open': barBlockIsVisible,'closed':!barBlockIsVisible}">
+
+            <div class="btn_tool_bar">
+
+                <button class="btn_tool" matTooltip="меню" matTooltipClass="tooltip" *ngIf="isResizeBarBlock"
+                    (click)="barBlockIsVisible =!barBlockIsVisible">
+                    <svg xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 384.97 384.97"
+                        style="enable-background:new 0 0 384.97 384.97;" xml:space="preserve">
+                        <g id="Grid">
+                            <path d="M144.364,0H24.061C10.767,0,0,10.767,0,24.061v120.303c0,13.281,10.767,24.061,24.061,24.061h120.303
+                        c13.293,0,24.061-10.779,24.061-24.061V24.061C168.424,10.767,157.657,0,144.364,0z M144.364,144.364H24.061V24.061h120.303
+                        V144.364z" />
+                            <path d="M360.909,0H240.606c-13.293,0-24.061,10.767-24.061,24.061v120.303c0,13.281,10.767,24.061,24.061,24.061h120.303
+                      c13.281,0,24.061-10.779,24.061-24.061V24.061C384.97,10.767,374.191,0,360.909,0z M360.909,144.364H240.606V24.061h120.303
+                      V144.364z" />
+                            <path d="M360.909,216.545H240.606c-13.293,0-24.061,10.779-24.061,24.061v120.303c0,13.293,10.767,24.061,24.061,24.061h120.303
+                      c13.281,0,24.061-10.767,24.061-24.061V240.606C384.97,227.313,374.191,216.545,360.909,216.545z M360.909,360.909H240.606
+                      V240.606h120.303V360.909z" />
+                            <path d="M144.364,216.545H24.061C10.767,216.545,0,227.325,0,240.606v120.303c0,13.293,10.767,24.061,24.061,24.061h120.303
+                      c13.293,0,24.061-10.767,24.061-24.061V240.606C168.424,227.313,157.657,216.545,144.364,216.545z M144.364,360.909H24.061
+                      V240.606h120.303V360.909z" />
+                        </g>
+                    </svg>
+                </button>
+
+                <button class="btn_tool" matTooltip="авторизация" matTooltipClass="tooltip"
+                    *ngIf="!authService.checkLogIn()" (click)="openLoginDialog()">
+                    <svg xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 499.1 499.1"
+                        style="enable-background:new 0 0 499.1 499.1;" xml:space="preserve">
+                        <g>
+                            <path d="M0,249.6c0,9.5,7.7,17.2,17.2,17.2h327.6l-63.9,63.8c-6.7,6.7-6.7,17.6,0,24.3c3.3,3.3,7.7,5,12.1,5s8.8-1.7,12.1-5
+                         l93.1-93.1c6.7-6.7,6.7-17.6,0-24.3l-93.1-93.1c-6.7-6.7-17.6-6.7-24.3,0c-6.7,6.7-6.7,17.6,0,24.3l63.8,63.8H17.2
+                         C7.7,232.5,0,240.1,0,249.6z" />
+                            <path d="M396.4,494.2c56.7,0,102.7-46.1,102.7-102.8V107.7C499.1,51,453,4.9,396.4,4.9H112.7C56,4.9,10,51,10,107.7V166
+                         c0,9.5,7.7,17.1,17.1,17.1c9.5,0,17.2-7.7,17.2-17.1v-58.3c0-37.7,30.7-68.5,68.4-68.5h283.7c37.7,0,68.4,30.7,68.4,68.5v283.7
+                         c0,37.7-30.7,68.5-68.4,68.5H112.7c-37.7,0-68.4-30.7-68.4-68.5v-57.6c0-9.5-7.7-17.2-17.2-17.2S10,324.3,10,333.8v57.6
+                         c0,56.7,46.1,102.8,102.7,102.8H396.4L396.4,494.2z" />
+                        </g>
+                    </svg>
+                </button>
+
+            </div>
+
+            <div class="basic_bar">
+                <app-main-tool-bar></app-main-tool-bar>
+            </div>
+
+            <div class="basic_bar" *ngComponentOutlet="dynamicBar"></div>
+
+        </div>
+
+    </div>
+
+</div> -->

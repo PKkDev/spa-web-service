@@ -1,0 +1,11 @@
+@import "~src/styles.scss";
+
+.header_container {
+    height: 100%;
+    padding: 0 25px;
+    background-color: lightblue;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    position: relative;
+}

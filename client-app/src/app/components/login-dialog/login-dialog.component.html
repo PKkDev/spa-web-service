@@ -1,0 +1,103 @@
+<div class="dialog_contaier">
+
+  <h1>LOGIN</h1>
+
+  <form class="form_cotainer" (ngSubmit)="logIn()" #form="ngForm">
+
+    <div class="fields">
+
+      <input type="text" placeholder="login" name="login" #login="ngModel" required [(ngModel)]="userName">
+
+      <input type="password" placeholder="password" name="pass" #pass="ngModel" required [(ngModel)]="password">
+
+    </div>
+
+    <div class="tool_footer">
+      <button class="butt" [disabled]="!form.form.valid" type="submit">
+        Войти
+      </button>
+      <button class="butt" [disabled]="true" type="submit">По телефону</button>
+    </div>
+
+  </form>
+
+  <div class="loading_container" *ngIf="authIsChecking">
+    <div class="loading_bars_container">
+      <div class="blockG" id="rotateG_01"></div>
+      <div class="blockG" id="rotateG_02"></div>
+      <div class="blockG" id="rotateG_03"></div>
+      <div class="blockG" id="rotateG_04"></div>
+      <div class="blockG" id="rotateG_05"></div>
+      <div class="blockG" id="rotateG_06"></div>
+      <div class="blockG" id="rotateG_07"></div>
+      <div class="blockG" id="rotateG_08"></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- <div class="dialog_contaier">
+
+    <mat-tab-group mat-align-tabs="center" [color]="'accent'">
+
+      <mat-tab label="Логин">
+
+        <ng-template [ngTemplateOutlet]="loginPassTemplate"></ng-template>
+
+      </mat-tab>
+      <mat-tab label="Телефон">
+
+        <ng-template [ngTemplateOutlet]="PhoneTemplate"></ng-template>
+
+      </mat-tab>
+
+    </mat-tab-group>
+
+  </div>
+
+</div>
+
+<ng-template #loginPassTemplate>
+
+  <form (ngSubmit)="logIn()" #form="ngForm">
+
+
+    <div class="content">
+
+      <input type="text" placeholder="login" name="login" #login="ngModel" required [(ngModel)]="userName">
+
+      <input type="password" placeholder="password" name="pass" #pass="ngModel" required [(ngModel)]="password">
+
+    </div>
+
+    <div class="footer">
+      <button class="btn" [disabled]="!form.form.valid" type="submit">Войти</button>
+    </div>
+
+  </form>
+
+</ng-template>
+
+
+
+<ng-template #PhoneTemplate>
+
+  <div class="content">
+
+    <input type="phone" placeholder="8(xxx)xxx-xx-xx" mask="0(000)000-00-00" name="phone" #phone="ngModel" required
+      [(ngModel)]="phoneNumber">
+
+    <input *ngIf="isPhoneCorrect" type="password" autocomplete="off" name="code" #code="ngModel" required matInput
+      [(ngModel)]="phoneCode">
+
+  </div>
+
+  <div class="footer">
+    <button class="btn" *ngIf="!isPhoneCorrect" [disabled]="phone.invalid" (click)="SendCodeToPhone()">Получить
+      код</button>
+    <button class="btn" *ngIf="isPhoneCorrect" [disabled]="!phoneCode || phone.invalid"
+      (click)="CheckCode()">Подтвердить</button>
+  </div>
+
+</ng-template> -->

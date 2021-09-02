@@ -1,0 +1,39 @@
+<div class="dialog_contaier">
+
+  <p class="title">Информация по клубу {{data.name}}</p>
+  <p class="sub_title" *ngIf="teamDetail">Актуально на {{teamDetail.lastUpdated}}</p>
+
+  <div mat-dialog-content class="dialog">
+
+    <div class="content" *ngIf="teamDetail; else tempoBlocks">
+
+      <ul>
+        <li><strong>адресс:</strong> {{teamDetail.address}}</li>
+        <li><strong>цвета:</strong> {{teamDetail.clubColors}}</li>
+        <li><strong>email:</strong> {{teamDetail.email}}</li>
+        <li><strong>телефон:</strong> {{teamDetail.phone}}</li>
+        <li><strong>сайт:</strong> <a target="blanck" [href]="teamDetail.website">{{teamDetail.website}}</a></li>
+      </ul>
+
+      <br>
+      <strong>Состав:</strong>
+
+      <ul *ngFor="let player of teamDetail.squad">
+        <li>{{player.name}} ({{player.position}})</li>
+      </ul>
+
+    </div>
+
+    <ng-template #tempoBlocks>
+
+      загрузка...
+
+    </ng-template>
+
+  </div>
+
+  <div mat-dialog-actions class="footer">
+    <button class="btn" (click)="cLoseDialog()" type="button" cdkFocusInitial>Закрыть</button>
+  </div>
+
+</div>

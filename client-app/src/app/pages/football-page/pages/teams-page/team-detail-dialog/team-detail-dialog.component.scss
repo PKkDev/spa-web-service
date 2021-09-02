@@ -1,0 +1,69 @@
+.dialog_contaier {
+  position: relative;
+  padding: 20px;
+  background-color: hsl(0, 0%, 10%);
+  text-align: left;
+  color: #fff;
+  font-weight: 500;
+  min-width: 25vw;
+  border-radius: 6px;
+
+  p {
+    margin: 5px 0;
+  }
+  .title {
+    font-size: 18px;
+  }
+
+  .sub_title {
+    font-size: 14px;
+  }
+
+  .dialog {
+    .content {
+      padding: 0 15px 0 0;
+      max-height: 50vh;
+      overflow: auto;
+
+      ul {
+        margin: 0;
+        padding: 0;
+
+        li {
+          list-style-type: none;
+          margin: 8px 0;
+          font-size: 15px;
+
+          a {
+            color: #2ecc71;
+          }
+        }
+      }
+    }
+  }
+
+  .footer {
+    .btn {
+      cursor: pointer;
+      border: 0;
+      background: none;
+      display: block;
+      margin: 20px 5px;
+      text-align: center;
+      border: 2px solid #2ecc71;
+      padding: 14px 30px;
+      outline: none;
+      color: #fff;
+      border-radius: 12px;
+      transition: 0.25s;
+
+      &:disabled {
+        opacity: 0.3;
+      }
+
+      &:not(:disabled):hover {
+        background-color: #2ecc71;
+      }
+    }
+  }
+}

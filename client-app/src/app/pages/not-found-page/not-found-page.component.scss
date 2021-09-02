@@ -1,0 +1,18 @@
+.container-fluid {
+    padding-top: 10%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+    .code {
+        font-size: 15vh;
+    }
+
+    .message {
+        font-size: 4vh;
+    }
+
+}

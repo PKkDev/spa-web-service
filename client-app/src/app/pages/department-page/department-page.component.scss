@@ -1,0 +1,39 @@
+@import "~src/styles.scss";
+
+.body_content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+    @media (max-width: 840px) {
+        flex-direction: column;
+
+        .left_inner_container {
+            width: 100% !important;
+            padding: 0 !important;
+        }
+
+        .right_inner_container {
+            width: 100% !important;
+            padding: 0 !important;
+        }
+    }
+
+    .left_inner_container {
+        width: 80%;
+        padding: 5px;
+
+        @media (max-width: 1180px) {
+            width: 70%;
+        }
+    }
+
+    .right_inner_container {
+        width: 20%;
+        padding: 5px;
+
+        @media (max-width: 1180px) {
+            width: 30%;
+        }
+    }
+}

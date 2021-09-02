@@ -1,0 +1,10 @@
+{
+  "ConnectionStrings": {
+    "ConnectDatabase": "Host=37.140.192.97;Port=3306;Database=u0901873_tz_ang;Username=u0901_admin;Password=ZlZlZlJeME2"
+  },
+  "SmsAreaSettings": {
+    "User": "prodevkir@mail.ru",
+    "Pass": "bX2KWyrQXCu4ujDnccUL9sKq25e",
+    "BaseUrl": "https://gate.smsaero.ru/v2/sms/send"
+  }
+}

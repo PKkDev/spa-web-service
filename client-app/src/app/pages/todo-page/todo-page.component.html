@@ -1,0 +1,104 @@
+<div class="post_view_container">
+
+    <div class="tool_container">
+
+        <div class="tool search">
+
+            <input class="search_input" placeholder="поиск" type="text" name="textFilter" #login="ngModel"
+                [(ngModel)]="textFilter" (ngModelChange)="setTextFilter(true)" autocomplete="off">
+
+        </div>
+
+        <div class="tool date_tool">
+
+            <div class="btn_group">
+                <button class="btn_tool" (click)="changeTypeView(2)"
+                    [ngClass]="{'active':typeViewPeriodRecord === 2}">за неделю</button>
+                <button class="btn_tool" (click)="changeTypeView(1)"
+                    [ngClass]="{'active':typeViewPeriodRecord === 1}">за вчера</button>
+                <button class="btn_tool" (click)="changeTypeView(0)"
+                    [ngClass]="{'active':typeViewPeriodRecord === 0}">за сегодня</button>
+            </div>
+
+        </div>
+
+        <div class="tool date_tool">
+
+            <compack-date-picker [useTime]="true" [locale]="'ru'" [rangeMode]="true" [type]="'line'"
+                [formatOutputDate]='formatOutPut' (selectLastDateEvent)="selectLastDateEvent($event)">
+            </compack-date-picker>
+
+        </div>
+
+        <div class="tool add_tool">
+
+            <button class="btn_icon_tool" matTooltip="добавить запись" matTooltipClass="tooltip"
+                (click)="emiteAddRecord()">
+                <svg xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 489.8 489.8"
+                    style="enable-background:new 0 0 489.8 489.8;" xml:space="preserve">
+                    <g>
+                        <path d="M438.2,0H51.6C23.1,0,0,23.2,0,51.6v386.6c0,28.5,23.2,51.6,51.6,51.6h386.6c28.5,0,51.6-23.2,51.6-51.6V51.6
+               C489.8,23.2,466.6,0,438.2,0z M465.3,438.2c0,14.9-12.2,27.1-27.1,27.1H51.6c-14.9,0-27.1-12.2-27.1-27.1V51.6
+               c0-14.9,12.2-27.1,27.1-27.1h386.6c14.9,0,27.1,12.2,27.1,27.1V438.2z" />
+                        <path d="M337.4,232.7h-80.3v-80.3c0-6.8-5.5-12.3-12.3-12.3s-12.3,5.5-12.3,12.3v80.3h-80.3c-6.8,0-12.3,5.5-12.3,12.2
+               c0,6.8,5.5,12.3,12.3,12.3h80.3v80.3c0,6.8,5.5,12.3,12.3,12.3s12.3-5.5,12.3-12.3v-80.3h80.3c6.8,0,12.3-5.5,12.3-12.3
+               C349.7,238.1,344.2,232.7,337.4,232.7z" />
+                    </g>
+                </svg>
+            </button>
+
+            <button class="btn_icon_tool" matTooltip="экспорт записей" matTooltipClass="tooltip"
+                (click)="exportRecords()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+                </svg>
+            </button>
+
+            <button class="btn_icon_tool" matTooltip="импорт записей" matTooltipClass="tooltip"
+                (click)="fileInput.click()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z" />
+                </svg>
+            </button>
+            <input accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required hidden
+                (change)="onFileSelected(fileInput)" name="newIcon" #fileInput type="file">
+
+        </div>
+
+
+
+    </div>
+
+    <div class="record_item_container"
+        [ngClass]="{'empty':(listViewRecord.length == 0 && !recordIsLoading) || !authService.checkLogIn()}">
+
+        <div class="record_item" *ngFor="let recordData of listViewRecord">
+            <app-todo-record-view [recordData]="recordData"></app-todo-record-view>
+        </div>
+
+        <div class="loading_container" *ngIf="recordIsLoading && authService.checkLogIn()">
+            <div class="loading_bars_container">
+                <div class="blockG" id="rotateG_01"></div>
+                <div class="blockG" id="rotateG_02"></div>
+                <div class="blockG" id="rotateG_03"></div>
+                <div class="blockG" id="rotateG_04"></div>
+                <div class="blockG" id="rotateG_05"></div>
+                <div class="blockG" id="rotateG_06"></div>
+                <div class="blockG" id="rotateG_07"></div>
+                <div class="blockG" id="rotateG_08"></div>
+            </div>
+        </div>
+
+        <h2 *ngIf="listViewRecord.length == 0 && !recordIsLoading && authService.checkLogIn()">
+            Отсутствуют записи...
+        </h2>
+
+        <h2 *ngIf="!authService.checkLogIn()">
+            требуется авторизация
+        </h2>
+
+    </div>
+
+</div>

@@ -1,0 +1,87 @@
+<div class="page_content">
+
+  <div class="page_title">
+    <h1>Список матчей</h1>
+  </div>
+
+  <div class="tool_container">
+
+    <div class="tool">
+
+      <compack-date-picker [useTime]="true" [locale]="'ru'" [rangeMode]="true" [viewFieldSelectedDate]="false"
+        [type]="'line'" [formatOutputDate]='formatOutPut' (selectLastDateEvent)="filterDateEvent($event)">
+      </compack-date-picker>
+
+    </div>
+
+    <div class="tool">
+
+      <mat-form-field class="my-mat-field" color="warn" appearance='outline'>
+        <mat-label  class="mat_label">Фильтр по статусу</mat-label>
+        <mat-select (selectionChange)="changeTypeView()" [(ngModel)]="selecteTypeMatchesView" name="filterColumn"
+          [disabled]="matches.length == 0">
+          <mat-option style="color:#000" *ngFor="let opt of typeMatchesView" [value]="opt.type">
+            {{opt.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+
+  </div>
+
+  <div class="body_content">
+
+    <ng-container *ngIf="dataIsLoading; else tempoBlocks">
+
+      <div class="match_container" *ngFor="let match of viewMatches">
+
+        <div class="match">
+
+          <div class="date">{{match.utcDate}} ({{match.status}})</div>
+
+          <div class="teams">
+
+            <div class="team" (click)="openTeamDetail(match.homeTeam.id, match.homeTeam.name)">
+              {{match.homeTeam.name}}
+            </div>
+
+            <div class="score">
+              {{match.homeTeam.goals}} : {{match.awayTeam.goals}}
+            </div>
+
+            <div class="team" (click)="openTeamDetail(match.awayTeam.id, match.awayTeam.name)">
+              {{match.awayTeam.name}}
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </ng-container>
+
+    <ng-template #tempoBlocks>
+
+      <div class="match_container hidden">
+        <div class="match blink"></div>
+      </div>
+      <div class="match_container hidden">
+        <div class="match blink"></div>
+      </div>
+      <div class="match_container hidden">
+        <div class="match blink"></div>
+      </div>
+      <div class="match_container hidden">
+        <div class="match blink"></div>
+      </div>
+      <div class="match_container hidden">
+        <div class="match blink"></div>
+      </div>
+
+    </ng-template>
+
+  </div>
+
+</div>

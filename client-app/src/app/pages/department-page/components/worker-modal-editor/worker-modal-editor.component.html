@@ -1,0 +1,49 @@
+<div class="dialog_contaier">
+
+  <form (ngSubmit)="update()" #form="ngForm">
+
+    <div mat-dialog-content class="fields">
+
+      <div class=" field_container">
+        <label class="field_lable">
+          Имя*
+        </label>
+        <input type="text" autocomplete="off" name="fName" #fName="ngModel" required matInput
+          [(ngModel)]="data.worker.fName">
+      </div>
+
+      <div class=" field_container">
+        <label class="field_lable">
+          Фамилия*
+        </label>
+        <input type="text" autocomplete="off" name="lName" #lName="ngModel" required matInput
+          [(ngModel)]="data.worker.lName">
+      </div>
+
+      <div class=" field_container">
+        <label class="field_lable">
+          Возраст*
+        </label>
+        <input type="number" autocomplete="off" name="age" #age="ngModel" required matInput
+          [(ngModel)]="data.worker.age">
+
+      </div>
+
+      <div class=" field_container">
+        <label class="field_lable">
+          Зарплата*
+        </label>
+        <input type="number" autocomplete="off" name="salary" #salary="ngModel" required matInput
+          [(ngModel)]="data.worker.salary">
+      </div>
+
+    </div>
+
+    <div mat-dialog-actions class="footer">
+      <button class="butt" (click)="cLoseDialog()" type="button" cdkFocusInitial>Отмена</button>
+      <button class="butt" [disabled]="!form.form.valid" type="submit">Применить</button>
+    </div>
+
+  </form>
+
+</div>

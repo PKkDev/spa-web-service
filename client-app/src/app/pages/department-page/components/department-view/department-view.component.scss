@@ -1,0 +1,91 @@
+@import "~src/styles.scss";
+
+.department_block {
+    padding: 0 0 0 22px;
+    position: relative;
+
+    .department_title_container {
+        margin: 10px 0;
+        padding: 20px 15px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 6px;
+        background-color: #fff;
+        box-sizing: border-box;
+        position: relative;
+
+        .description {
+            padding: 5px 0;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 2;
+            cursor: pointer;
+
+            .title {
+                font-size: 18px;
+                color: #000;
+            }
+
+            .created {
+                font-size: 13px;
+                line-height: 1;
+                color: lightslategrey;
+            }
+
+            .my-mat-field {
+                color: #000;
+            }
+        }
+
+        .tool {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+
+            .btn {
+                margin: 0 5px;
+                @include basic_ico_btn();
+
+                svg {
+                    width: 20px;
+                    height: 20px;
+                    fill: #000;
+
+                    &:hover {
+                        fill: red;
+                    }
+                }
+
+                &:disabled {
+                    opacity: 0.5;
+                }
+            }
+        }
+
+        .department_open_icon {
+            position: absolute;
+            top: 0;
+            left: 5px;
+        }
+    }
+
+    .inner_departments_container {
+        position: relative;
+
+        margin: 0 0 0 10px;
+        border-left: thin solid black;
+    }
+
+    .visible {
+        display: block;
+    }
+
+    .hidden {
+        display: none;
+    }
+}

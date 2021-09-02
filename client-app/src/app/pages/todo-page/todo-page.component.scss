@@ -1,0 +1,149 @@
+@import "~src/assets/scss/loading-bars-animations.scss";
+@import "~src/assets/scss/mixins.scss";
+
+.post_view_container {
+    display: flex;
+    width: 100%;
+    padding: 10px 5px;
+    box-sizing: border-box;
+
+    .tool_container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+
+        @media (min-width: 800px), (min-height: 800px) {
+            position: sticky;
+            top: 5px;
+            z-index: 1;
+        }
+
+        @media (max-width: 965px) {
+            justify-content: flex-start;
+        }
+
+        .tool {
+            width: 100%;
+            height: auto;
+            box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 6px;
+            padding: 15px 15px;
+            background-color: #212031;
+            margin-bottom: 5px;
+            align-items: center;
+            display: flex;
+            height: fit-content;
+            box-sizing: border-box;
+
+            @media (max-width: 688px) {
+                margin: 5px 5px;
+            }
+        }
+
+        .search {
+            .search_input {
+                font-weight: 600;
+                font-size: 15px;
+                outline: none;
+                box-shadow: none;
+                width: 100%;
+                padding: 15px;
+            }
+        }
+
+        .date_tool {
+            justify-content: center;
+
+            .btn_group {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+
+                .btn_tool {
+                    font-weight: 600;
+                    border-radius: 6px;
+                    outline: none;
+                    box-shadow: none;
+                    background-color: #fff;
+                    color: #212031;
+                    cursor: pointer;
+                    padding: 10px 15px;
+                    border: thin solid #fff;
+
+                    &:hover {
+                        background-color: #2ecc71;
+                        border-color: #2ecc71;
+                    }
+                }
+
+                .active {
+                    background-color: #2ecc71;
+                    color: #000;
+                    border-color: #2ecc71;
+                }
+            }
+        }
+
+        .add_tool {
+            .btn_icon_tool {
+                @include basic_ico_btn;
+
+                svg {
+                    fill: #fff;
+                    cursor: pointer;
+                    height: 35px;
+                    width: 35px;
+
+                    &:hover {
+                        fill: #2ecc71;
+                    }
+                }
+            }
+        }
+    }
+
+    .record_item_container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0 5px;
+
+        .loading_container {
+            padding: 0;
+            width: 100%;
+            height: 40%;
+            position: absolute;
+            top: 25px;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+
+            .loading_bars_container {
+                position: absolute;
+            }
+        }
+
+        .record_item {
+            margin: 8px;
+            height: fit-content;
+
+            @media (max-width: 685px) {
+                max-width: none;
+            }
+
+            @media (max-width: 540px) {
+                max-width: none;
+            }
+        }
+    }
+
+    .empty {
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
+}

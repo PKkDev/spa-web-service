@@ -1,0 +1,114 @@
+@import "~src/styles.scss";
+
+.container_workers {
+    display: flex;
+    flex-direction: column;
+
+    .container_workers_title {
+        margin: 0;
+        text-align: center;
+    }
+
+    hr {
+        width: 100%;
+        background-color: #000;
+        color: #000;
+    }
+
+    .top_bar {
+        box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 6px;
+        background-color: #212031;
+        padding: 5px 10px;
+
+        flex-wrap: wrap;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        margin-bottom: 10px;
+
+        @media (max-width: 840px) {
+            width: fit-content;
+            align-items: center !important;
+        }
+
+        .btn_tool {
+            padding: 6px;
+            @include basic_ico_btn();
+
+            &:disabled {
+                opacity: 0.7;
+            }
+
+            svg {
+                fill: #fff;
+                width: 30px;
+                height: 30px;
+
+                &:hover {
+                    fill: red;
+                }
+            }
+        }
+
+        .radio_group {
+            color: #fff;
+            display: flex;
+            flex-direction: row;
+            margin: 5px 0;
+
+            .radio_btn {
+                margin: 0 2px;
+            }
+        }
+
+        .my-mat-field {
+            margin: 10px 0;
+            width: 100%;
+
+            .mat_label {
+                color: #fff;
+            }
+
+            .mat_label {
+                color: #fff;
+            }
+
+            @media (max-width: 840px) {
+                width: fit-content !important;
+            }
+        }
+    }
+
+    .worker {
+        padding: 18px 15px;
+        font-size: 18px;
+        background-color: #fff;
+        color: #000;
+        cursor: pointer;
+        margin-bottom: 5px;
+        position: relative;
+        border: thin solid black;
+
+        .worker_tool_bar {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+
+            .btn_tool {
+                margin: 0 5px;
+                @include basic_ico_btn();
+
+                svg {
+                    fill: #000;
+                    width: 20px;
+                    height: 20px;
+
+                    &:hover {
+                        fill: red;
+                    }
+                }
+            }
+        }
+    }
+}

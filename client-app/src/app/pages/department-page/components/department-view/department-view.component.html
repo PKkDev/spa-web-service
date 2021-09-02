@@ -1,0 +1,138 @@
+<div class="department_block">
+
+  <div class="department_title_container">
+
+    <span class="department_open_icon" *ngIf="visibleMoreDep">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+        <path d="M0 0h24v24H0z" fill="none" />
+        <path
+          d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
+      </svg>
+    </span>
+
+    <ng-template [ngTemplateOutlet]="template" [ngTemplateOutletContext]="config"></ng-template>
+
+  </div>
+
+  <ng-template #editTemplate>
+
+    <div class="description" (click)="viewMoreDepartment(false)" #container>
+
+      <mat-form-field class="my-mat-field" color="warn" appearance='outline' *ngIf="editetDepartment">
+        <mat-label>Название</mat-label>
+        <input name="depName" required matInput #depName="ngModel" [(ngModel)]="editetDepartment.name">
+      </mat-form-field>
+
+    </div>
+
+    <div class="tool" *ngIf="isCanEdit && editetDepartment">
+
+      <button class="btn" [disabled]="editetDepartment.name === ''" *ngIf="visibleMoreDep" (click)="updateDepartment()"
+        [matTooltip]="'применить'" matTooltipClass="tooltip">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M0 0h24v24H0z" fill="none" />
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+        </svg>
+      </button>
+
+      <button class="btn" *ngIf="visibleMoreDep" (click)="cancelEdit()" [matTooltip]="'отмена'"
+        matTooltipClass="tooltip">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M0 0h24v24H0z" fill="none" />
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM4 12c0-4.42 3.58-8 8-8 1.85 0 3.55.63 4.9 1.69L5.69 16.9C4.63 15.55 4 13.85 4 12zm8 8c-1.85 0-3.55-.63-4.9-1.69L18.31 7.1C19.37 8.45 20 10.15 20 12c0 4.42-3.58 8-8 8z" />
+        </svg>
+      </button>
+
+    </div>
+
+  </ng-template>
+
+  <ng-template #viewTemplate let=config>
+
+    <div class="description" (click)="viewMoreDepartment(false)" #container>
+      <span class="title">{{config?.name}}</span>
+      <span class="created">{{config?.createdAt | date:'dd.MM.yy HH:mm'}}</span>
+    </div>
+
+    <div class="tool" *ngIf="isCanEdit">
+      <button class="btn" *ngIf="visibleMoreDep" (click)="startEdite()" [matTooltip]="'изменить'"
+        matTooltipClass="tooltip">
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 330 330"
+          style="enable-background:new 0 0 330 330;" xml:space="preserve">
+          <g>
+            <path id="XMLID_24_" d="M75,180v60c0,8.284,6.716,15,15,15h60c3.978,0,7.793-1.581,10.606-4.394l164.999-165
+                  c5.858-5.858,5.858-15.355,0-21.213l-60-60C262.794,1.581,258.978,0,255,0s-7.794,1.581-10.606,4.394l-165,165
+                  C76.58,172.206,75,176.022,75,180z M105,186.213L255,36.213L293.787,75l-150,150H105V186.213z" />
+            <path id="XMLID_27_"
+              d="M315,150.001c-8.284,0-15,6.716-15,15V300H30V30H165c8.284,0,15-6.716,15-15s-6.716-15-15-15H15
+                  C6.716,0,0,6.716,0,15v300c0,8.284,6.716,15,15,15h300c8.284,0,15-6.716,15-15V165.001C330,156.716,323.284,150.001,315,150.001z" />
+          </g>
+        </svg>
+      </button>
+      <button class="btn" *ngIf="visibleMoreDep" (click)="remove()" [matTooltip]="'удалить'" matTooltipClass="tooltip">
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 900.5 900.5"
+          style="enable-background:new 0 0 900.5 900.5;" xml:space="preserve">
+          <g>
+            <path
+              d="M176.415,880.5c0,11.046,8.954,20,20,20h507.67c11.046,0,20-8.954,20-20V232.487h-547.67V880.5L176.415,880.5z
+         M562.75,342.766h75v436.029h-75V342.766z M412.75,342.766h75v436.029h-75V342.766z M262.75,342.766h75v436.029h-75V342.766z" />
+            <path
+              d="M618.825,91.911V20c0-11.046-8.954-20-20-20h-297.15c-11.046,0-20,8.954-20,20v71.911v12.5v12.5H141.874
+        c-11.046,0-20,8.954-20,20v50.576c0,11.045,8.954,20,20,20h34.541h547.67h34.541c11.046,0,20-8.955,20-20v-50.576
+        c0-11.046-8.954-20-20-20H618.825v-12.5V91.911z M543.825,112.799h-187.15v-8.389v-12.5V75h187.15v16.911v12.5V112.799z" />
+          </g>
+        </svg>
+      </button>
+      <button class="btn" *ngIf="visibleMoreDep" (click)="startAddnewDepartment()"
+        [matTooltip]="'добавить вложенный департамент'" matTooltipClass="tooltip">
+        <svg xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 489.8 489.8"
+          style="enable-background:new 0 0 489.8 489.8;" xml:space="preserve">
+          <g>
+            <path d="M438.2,0H51.6C23.1,0,0,23.2,0,51.6v386.6c0,28.5,23.2,51.6,51.6,51.6h386.6c28.5,0,51.6-23.2,51.6-51.6V51.6
+   C489.8,23.2,466.6,0,438.2,0z M465.3,438.2c0,14.9-12.2,27.1-27.1,27.1H51.6c-14.9,0-27.1-12.2-27.1-27.1V51.6
+   c0-14.9,12.2-27.1,27.1-27.1h386.6c14.9,0,27.1,12.2,27.1,27.1V438.2z" />
+            <path d="M337.4,232.7h-80.3v-80.3c0-6.8-5.5-12.3-12.3-12.3s-12.3,5.5-12.3,12.3v80.3h-80.3c-6.8,0-12.3,5.5-12.3,12.2
+   c0,6.8,5.5,12.3,12.3,12.3h80.3v80.3c0,6.8,5.5,12.3,12.3,12.3s12.3-5.5,12.3-12.3v-80.3h80.3c6.8,0,12.3-5.5,12.3-12.3
+   C349.7,238.1,344.2,232.7,337.4,232.7z" />
+          </g>
+        </svg>
+      </button>
+    </div>
+
+  </ng-template>
+
+
+  <div class="inner_departments_container" [ngClass]="{'visible':visibleMoreDep, 'hidden':!visibleMoreDep}">
+
+    <ng-container *ngIf="startLoadingSubDepartments && config?.departments?.length ===0; else innerDepartmentBlock">
+
+      загрузка...
+
+    </ng-container>
+
+    <ng-template #innerDepartmentBlock>
+
+      <ng-container *ngIf="config?.departments?.length !==0; else noInnserDep">
+
+
+        <ng-container *ngFor="let dep of config?.departments">
+
+          <app-department-view [config]="dep"></app-department-view>
+
+        </ng-container>
+
+      </ng-container>
+
+      <ng-template #noInnserDep>
+
+        отсутствуют вложенные департаменты
+
+      </ng-template>
+
+    </ng-template>
+
+  </div>
+
+</div>

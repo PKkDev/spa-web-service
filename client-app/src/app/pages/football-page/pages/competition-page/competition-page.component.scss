@@ -1,0 +1,90 @@
+@import "~src/assets/scss/base-foot-page.scss";
+
+.page_content {
+  .tool_container {
+    .tool {
+    }
+  }
+
+  .body_content {
+    .hidden {
+      .competition {
+        height: 180px;
+      }
+    }
+
+    .competition_container {
+      padding: 10px;
+      width: 33%;
+      height: fit-content;
+      box-sizing: border-box;
+
+      @media (max-width: 770px) {
+        width: 50%;
+      }
+
+      @media (max-width: 505px) {
+        width: 100%;
+      }
+
+      .competition {
+        box-sizing: border-box;
+        position: relative;
+        width: 100%;
+        padding: 10px;
+        box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 6px;
+        background-color: #fff;
+        font-weight: 500;
+
+        .title {
+          margin: 0 0 8px 0;
+          font-size: 18px;
+          text-align: center;
+        }
+
+        .body {
+          display: flex;
+          margin: 0 0 5px 0;
+
+          .logo {
+            margin: 0 10px 0 0;
+            height: 90px;
+            max-width: 50%;
+          }
+
+          ul {
+            margin: 0;
+            padding: 0;
+            li {
+              list-style-type: none;
+              margin: 8px 0;
+              font-size: 15px;
+            }
+          }
+        }
+
+        .tool_bar {
+          .tool_btn {
+            width: 50%;
+            font-weight: 500;
+            border-radius: 6px;
+            outline: none;
+            box-shadow: none;
+            background-color: #eee;
+            color: #212031;
+            cursor: pointer;
+            padding: 10px 15px;
+            border: thin solid #eee;
+
+            &:hover {
+              color: #fff;
+              background-color: #212031;
+              border-color: #212031;
+            }
+          }
+        }
+      }
+    }
+  }
+}

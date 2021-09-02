@@ -1,0 +1,80 @@
+<div class="page_content">
+
+  <div class="page_title">
+    <h1>Список соревнований</h1>
+  </div>
+
+  <div class="tool_container">
+
+    <div class="tool">
+
+      <mat-form-field class="my-mat-field" [color]="'warn'" appearance="outline">
+        <mat-label class="mat_label">Поиск по соревнованиям</mat-label>
+        <input autocomplete="off" name="textFilter" #login="ngModel" matInput [(ngModel)]="textFilter"
+          (ngModelChange)="setTextFilter(true)">
+      </mat-form-field>
+
+    </div>
+
+  </div>
+
+  <div class="body_content">
+
+    <ng-container *ngIf="dataIsLoading; else tempoBlocks">
+
+      <div class="competition_container" *ngFor="let item of viewCompetition">
+
+        <div class="competition">
+
+          <p class="title">
+            {{ item.competitionName }}
+          </p>
+
+          <div class="body">
+
+            <img *ngIf="item.emblemUrl" class="logo" alt="logo" [src]="item.emblemUrl">
+
+            <div class="info">
+              <ul>
+                <li>страна: {{ item.areaName }}</li>
+                <li *ngIf="item.seasonInfo"> {{ item.seasonInfo.startDate }} : {{ item.seasonInfo.endDate }}</li>
+                <li *ngIf="item.seasonInfo && item.seasonInfo.day"> {{ item.seasonInfo.day }} -й день</li>
+              </ul>
+            </div>
+
+          </div>
+
+          <div class="tool_bar">
+            <button class="tool_btn" [routerLink]="['/foot/matches',this.typeStartView, item.competitionId]">Игры</button>
+            <button class="tool_btn" [routerLink]="['/foot/teams', item.competitionId]">Команды</button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </ng-container>
+
+    <ng-template #tempoBlocks>
+
+      <div class="competition_container hidden">
+        <div class="competition blink"></div>
+      </div>
+      <div class="competition_container hidden">
+        <div class="competition blink"></div>
+      </div>
+      <div class="competition_container hidden">
+        <div class="competition blink"></div>
+      </div>
+      <div class="competition_container hidden">
+        <div class="competition blink"></div>
+      </div>
+      <div class="competition_container hidden">
+        <div class="competition blink"></div>
+      </div>
+
+    </ng-template>
+
+  </div>
+
+</div>
