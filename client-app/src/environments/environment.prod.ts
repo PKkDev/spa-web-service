@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   swaggerUrlSegment: 'swagger',
-  linckToCode: 'https://github.com/PKkDev/SkillboxApp/tree/main/client-app',
+  linckToCode: 'https://github.com/PKkDev/spa-web-service/tree/main/client-app',
   linckToAuthor: 'https://github.com/PKkDev',
 
   footballApiUrl: 'https://api.football-data.org/v2/',
