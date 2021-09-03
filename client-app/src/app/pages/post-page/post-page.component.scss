@@ -102,6 +102,7 @@
         padding: 0 5px;
         display: flex;
         flex-wrap: wrap;
+        min-width: 100px;
 
         .loading_container {
             padding: 25px 0;
@@ -137,6 +138,5 @@
     .empty {
         display: block;
         text-align: center;
-        width: 100%;
     }
 }
