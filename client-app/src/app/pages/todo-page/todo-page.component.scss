@@ -7,6 +7,31 @@
     padding: 10px 5px;
     box-sizing: border-box;
 
+    @media (max-width: 1135px) {
+        flex-direction: column;
+
+        .tool_container {
+            flex-direction: row !important;
+            .tool {
+                height: 100% !important;
+                width: auto !important;
+            }
+            .add_tool {
+                padding: 21px 15px !important;
+            }
+        }
+    }
+
+    @media (max-width: 576px) {
+        .tool_container {
+            flex-direction: column !important;
+            .tool {
+                height: auto !important;
+                width: 100% !important;
+            }
+        }
+    }
+
     .tool_container {
         position: relative;
         display: flex;
@@ -15,11 +40,14 @@
         align-items: flex-start;
         flex-wrap: wrap;
 
-        @media (min-width: 800px), (min-height: 800px) {
-            position: sticky;
-            top: 5px;
-            z-index: 1;
+        @media (max-width: 576px) {
         }
+
+        // @media (min-width: 800px), (min-height: 600px) {
+        //     position: sticky;
+        //     top: 5px;
+        //     z-index: 1;
+        // }
 
         @media (max-width: 965px) {
             justify-content: flex-start;
@@ -106,6 +134,7 @@
     }
 
     .record_item_container {
+        position: relative;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;

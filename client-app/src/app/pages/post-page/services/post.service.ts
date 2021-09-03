@@ -55,7 +55,7 @@ export class PostService implements OnDestroy {
       .pipe(
         map(value => {
           value.forEach(x => {
-            x.displayDate = moment(x.date, 'YYYY-MM-DDTHH:mm:ss').format('D MMMM HH:mm')
+            x.displayDate = moment(x.date, 'YYYY-MM-DDTHH:mm:ss').format('D.MM HH:mm')
             x.isNew = false
           })
           return value;

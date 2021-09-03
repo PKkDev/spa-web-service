@@ -11,5 +11,13 @@ html {
     height: 100%;
     background-color: rgb(211, 211, 211);
     font-family: "Poppins", sans-serif;
-    // font-family: "Roboto";
+}
+
+.picker_tool {
+    .calendar_container {
+        .input {
+            width: 100% !important;
+            min-width: unset !important;
+        }
+    }
 }
